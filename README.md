@@ -17,7 +17,7 @@ hidden items are made fully invisible but keep their space on the page, so the l
 
 ## to install
 
-not available on the chrome web store, so load unpakced:
+not available on the chrome web store, so load unpacked:
 
 1. download/clone this repo.
 2. open `chrome://extensions` and turn on **developer mode** (top right).
