@@ -1,0 +1,32 @@
+/* Before the script has tagged the page, hide every known score so nothing flashes. */
+html:not(.dim-ready):not(.dim-disabled) :is(
+  .albumCriticScore, .albumUserScore, .trackRating, .albumReviewRating,
+  .albumReviewRatingBar, .ratingBlock, #moreStats, #moreStatsLink,
+  .albumCriticScoreBox .text.gray, .albumUserScoreBox .text.gray,
+  .mustHearButton, .mustHear:not(.image)
+) {
+  visibility: hidden !important;
+}
+
+/* Hidden element: invisible (number, bar colour and all) but still takes up its space, so the
+   page layout doesn't jump. Children are hidden too in case the site sets visibility on them.
+   Rules only match while hiding is on and the category is enabled in the popup.
+   Anything holding a form control (e.g. the box that appears after "Rate tracks") is left alone
+   so you can still enter your own ratings. */
+html:not(.dim-disabled):not(.dim-off-critic) [data-dim="critic"]:not(:has(input, select, textarea, [contenteditable])),
+html:not(.dim-disabled):not(.dim-off-critic) [data-dim="critic"]:not(:has(input, select, textarea, [contenteditable])) *,
+html:not(.dim-disabled):not(.dim-off-user) [data-dim="user"]:not(:has(input, select, textarea, [contenteditable])),
+html:not(.dim-disabled):not(.dim-off-user) [data-dim="user"]:not(:has(input, select, textarea, [contenteditable])) *,
+html:not(.dim-disabled):not(.dim-off-tracks) [data-dim="tracks"]:not(:has(input, select, textarea, [contenteditable])),
+html:not(.dim-disabled):not(.dim-off-tracks) [data-dim="tracks"]:not(:has(input, select, textarea, [contenteditable])) *,
+html:not(.dim-disabled):not(.dim-off-reviews) [data-dim="reviews"]:not(:has(input, select, textarea, [contenteditable])),
+html:not(.dim-disabled):not(.dim-off-reviews) [data-dim="reviews"]:not(:has(input, select, textarea, [contenteditable])) *,
+html:not(.dim-disabled):not(.dim-off-ranks) [data-dim="ranks"]:not(:has(input, select, textarea, [contenteditable])),
+html:not(.dim-disabled):not(.dim-off-ranks) [data-dim="ranks"]:not(:has(input, select, textarea, [contenteditable])) *,
+html:not(.dim-disabled):not(.dim-off-reviewtext) [data-dim="reviewtext"]:not(:has(input, select, textarea, [contenteditable])),
+html:not(.dim-disabled):not(.dim-off-reviewtext) [data-dim="reviewtext"]:not(:has(input, select, textarea, [contenteditable])) * {
+  visibility: hidden !important;
+}
+html:not(.dim-disabled):not(.dim-off-musthear) [data-dim="musthear"] {
+  display: none !important;
+}

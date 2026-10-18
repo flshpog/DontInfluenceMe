@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Don't Influence Me",
+  "version": "1.0.0",
+  "description": "Hides scores, ratings and rankings on albumoftheyear.org until you click to reveal them.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "Don't Influence Me",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-hiding": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "Turn hiding on or off"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://albumoftheyear.org/*", "*://*.albumoftheyear.org/*"],
+      "css": ["content.css"],
+      "js": ["settings.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
